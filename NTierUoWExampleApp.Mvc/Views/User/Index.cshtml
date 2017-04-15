@@ -1,0 +1,170 @@
+﻿@using NTierUoWExampleApp.Mvc.Helpers
+@{
+    ViewBag.Title = "Index";
+}
+
+@section breadcrumbs{
+
+    <section class="content-header">
+        <h1>
+            Users
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">Users</li>
+        </ol>
+    </section>
+}
+
+@section styles{
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.14.0/css/ui.jqgrid.min.css">
+    }
+
+<input type="hidden" id="ApplicationHostname" value="@ViewBag.AppUrl" />
+<input type="hidden" id="userId" value="@ViewBag.UserId" />
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Application users</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span class="pull-left">
+                            <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <input placeholder="Search" class="ebInput" id="user_grid_search" type="text" />
+
+                            <span class="btn btn-sm btn-primary" id="search_grid_btn">Search</span>
+                            <span class="btn btn-sm btn-danger" id="clear_search_grid_btn">Clear</span>
+                        </span>
+                        <span class="pull-right">
+                            <a href="@Url.Action("Create", "User")" class="btn btn-sm btn-default">New User</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="space-10"></div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="overflow-auto">
+                            <table id="user_grid_table"></table>
+                            <div id="user_grid_table_pager"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--delete user-->
+<div id="DeleteUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("Delete", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "userManager.onDeleteUserSuccess(data)", OnFailure = "userManager.onDeleteUserError(data)" }, new { @class = "form-submit-loader" }))
+        {
+
+            <input type="hidden" id="delete_user_id" name="userId" value="" />
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Delete user</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Delete: </span>
+                    <span id="delete_user_name"></span>
+                    <span>?</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn">Delete</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<!--reset user password-->
+<div id="ResetPasswordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("ForgotPassword", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "userManager.onResetUserPasswordSuccess(data)", OnFailure = "userManager.onResetUserPasswordError(data)" }, new { @class = "form-submit-loader" }))
+        {
+            <input type="hidden" id="reset_password_user_id" name="userId" value="" />
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Reset password</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Reset password for : </span>
+                    <span id="reset_password_user_name"></span>
+                    <span>?</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn">Reset</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!--resend confirmation email-->
+<div id="resend_confirmation_email_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("ResendEmailConfirmationToken", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "userManager.onResendTokenSuccess(data)", OnFailure = "userManager.onResendTokenError(data)" }, new { @class = "form-submit-loader" }))
+        {
+
+            <input type="hidden" id="resend_confirmation_email_user_id" name="userId" value="" />
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Resend account confirmation email</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Resend email for : </span>
+                    <span id="resend_confirmation_email_user_name"></span>
+                    <span>?</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn">Ok</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.14.0/jquery.jqgrid.min.js"></script>
+    <script src="@Url.VersionedContent(@"~/Scripts/app/user/user.index.js")"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            userManager.init();
+        });
+    </script>
+
+
+}

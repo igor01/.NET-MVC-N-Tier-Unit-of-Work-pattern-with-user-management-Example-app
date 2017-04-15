@@ -1,0 +1,176 @@
+﻿@model NTierUoWExampleApp.Core.BindingModels.Account.RegisterUserViewModel
+
+@{
+    Layout = "~/Views/Shared/_TemplateEmpty.cshtml";
+    ViewBag.Title = "Register";
+}
+
+@section styles{
+
+    <link href="~/Content/app/createManageUser.css" rel="stylesheet" />
+}
+
+@section breadcrumbs{
+    <section class="content-header">
+        <h1 class="page-header">
+            Register
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                Register
+            </li>
+        </ol>
+    </section>
+}
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-1">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Register new account</h3>
+            </div>
+
+
+            @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-horizontal", @role = "form" }))
+            {
+                <div class="box-body">
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.Code)
+                    @Html.HiddenFor(x => x.Id)
+
+                    
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Email, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @readonly = true })
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.UserName, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @readonly = true })
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.UserName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.FirstName, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.FirstName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.LastName, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.LastName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.PhoneNumber, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.PhoneNumber)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Password, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.Password)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.ConfirmPassword, new { @class = "col-sm-2 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right">Register</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+

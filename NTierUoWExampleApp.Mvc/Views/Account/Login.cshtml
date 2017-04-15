@@ -1,0 +1,87 @@
+﻿@model NTierUoWExampleApp.Core.BindingModels.Account.LoginViewModel
+@using NTierUoWExampleApp.Mvc.Helpers
+@{
+    Layout = "~/Views/Shared/_TemplateLoginLayout.cshtml";
+    ViewBag.Title = "Log in";
+}
+<div class="login-box">
+    <div class="login-logo">
+        <p>
+            <strong class="ericsson-capital font-blue">ELD</strong>
+        </p>
+    </div>
+    <div class="login-box-body">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+            </div>
+            <div class="form-group">
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+            </div>
+            <div class="form-group">
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+            </div>
+        }
+        <div class="space-10"></div>
+        <a href="#" id="forgot_password_link">I forgot my password</a><br>
+    </div>
+</div>
+
+<div id="ResetPasswordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("ForgotPassword", "Account", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "loginManager.onResetUserPasswordSuccess(data)", OnFailure = "loginManager.onResetUserPasswordError(data)" }))
+        {
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Reset password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-xs-12">Email</label>
+                            <div class="col-xs-12 col-md-6">
+                                <input type="text" name="Email" id="reset_email_field" class="form-control" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Reset</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="@Url.VersionedContent(@"~/Scripts/app/account/account.login.js")"></script>
+    <script type="text/javascript">
+            loginManager.init();
+    </script>
+}
+}

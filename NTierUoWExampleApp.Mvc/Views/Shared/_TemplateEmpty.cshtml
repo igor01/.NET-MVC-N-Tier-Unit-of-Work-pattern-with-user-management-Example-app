@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OSLS</title>
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/AdminLTE/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/AdminLTE/css/skins/skin-blue.css" rel="stylesheet" />
+    <link href="~/Content/app/app.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Main Header -->
+        @Html.Partial("_TemplateTopBarEmpty")
+
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+
+                @RenderSection("styles", required: false)
+                @RenderSection("breadcrumbs", required: false)
+                <hr />
+
+                @RenderBody()
+            </section>
+            <!-- /.content -->
+        </div>
+
+
+        <script src="~/Scripts/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        <!--global notifications-->
+        <script type="text/javascript">
+        var globalNotification = false;
+        var globalNotificationInformationMessage = "";
+        var globalNotificationWarningMessage = "";
+        var globalNotificationErrorMessage = "";
+        var globalNotificationSuccessMessage = "";
+
+        if ((globalNotificationInformationMessage = '@TempData["Information"]') != null && globalNotificationInformationMessage != "") {
+            globalNotification = true;
+        }
+        if ((globalNotificationWarningMessage = '@TempData["Warning"]') != null && globalNotificationWarningMessage != "") {
+            globalNotification = true;
+        }
+        if ((globalNotificationErrorMessage = '@TempData["Error"]') != null && globalNotificationErrorMessage != "") {
+            globalNotification = true;
+        }
+        if ((globalNotificationSuccessMessage = '@TempData["Success"]') != null && globalNotificationSuccessMessage != "") {
+            globalNotification = true;
+        }
+
+        </script>
+
+
+        <script src="~/Scripts/bootstrap-notify/bootstrap-notify.min.js"></script>
+        <script src="~/Scripts/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="~/Scripts/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+        <script src="~/Scripts/app/common.js"></script>
+
+        <!--model state errors-->
+        <script type="text/javascript">
+        var isValid = '@Html.Raw(Json.Encode(ViewData.ModelState.IsValid))';
+
+
+        if (isValid != "true") {
+            var errors = @Html.Raw(Json.Encode(ViewData.ModelState.Keys.SelectMany(x => ViewData.ModelState[x].Errors).Select(m => m.ErrorMessage).ToList()));
+            var msg = '<ul>';
+            if(errors != null && errors.length > 0){
+                for(var i = 0; i < errors.length; ++i){
+                    msg += '<li>' + errors[i] +'</li>';
+                }
+                msg += '</ul>'
+
+                var options = {
+                    message: msg,
+                    type: "warning",
+                    duration: 0,
+                    title: "Validation summary",
+                    placement: {
+                        from: "top",
+                        align: "center"
+                    }
+                }
+
+                showNotification(options);
+            }
+        }
+        </script>
+
+
+
+        <script src="~/Scripts/AdminLTE/app.min.js"></script>
+
+        @RenderSection("scripts", required: false)
+
+
+
+
+
+    </div>
+</body>
+</html>
+

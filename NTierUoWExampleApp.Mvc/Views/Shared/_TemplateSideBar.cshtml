@@ -1,0 +1,35 @@
+﻿<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+
+            @if (User.IsInRole("Administrator"))
+            {
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString().Equals("Home") ? "active" : "")">
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Home</span></a>
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString().Equals("User") ? "active" : "")">
+                    <a href="@Url.Action("Index", "User")"><i class="fa fa-home"></i> <span>Users</span></a>
+                </li>
+            }
+
+
+            @if (User.IsInRole("Viewer"))
+            {
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString().Equals("Home") ? "active" : "")">
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Home</span></a>
+                </li>
+
+            }
+
+            
+            
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,259 @@
+﻿.space-5 {
+    height: 5px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-10 {
+    height: 10px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-15 {
+    height: 15px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-20 {
+    height: 20px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-25 {
+    height: 25px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-30 {
+    height: 30px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-35 {
+    height: 35px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-40 {
+    height: 40px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-45 {
+    height: 45px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-50 {
+    height: 50px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-100 {
+    height: 100px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+.space-200 {
+    height: 200px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+/*
+ user online status
+*/
+.user-online-circle {
+    position: relative;
+    background-color: #89ba17;
+    margin: 2px;
+    margin-left: 20px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+}
+
+.user-online-circle:hover {
+    background-color: #89ba17 !important;
+}
+
+.user-offline-circle {
+    position: relative;
+    background-color: #e32119;
+    margin: 2px;
+    margin-left: 20px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+}
+
+.user-offline-circle:hover {
+    background-color: #e32119 !important;
+}
+
+
+/*jqGrid action buttons*/
+#jqGrid-action-panel a.btn {
+    height: 40%;
+    padding: 0px 8px;
+}
+
+/* User dropdown */
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    height: 65px !important;
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: rgb(224, 221, 221) !important;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-size: 1.1em !important;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+    background-color: #367faa;
+}
+
+.eld-dropdown-menu {
+    background-color: #333 !important;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left !important;
+    border-radius: 0px;
+}
+
+.topBarDropdown {
+    background-color: #333 !important;
+    border: none !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    min-width: 185px !important;
+}
+
+@media (max-width: 991px) {
+    .navbar-custom-menu > .navbar-nav > li > .topBarDropdown {
+        right: 0%;
+    }
+
+    .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
+        color: #C9B57B;
+        background-color: #333333;
+        text-align: left;
+    }
+}
+
+.eld-dropdown-menu > li > a {
+    color: #f6f6fd;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer > .btn-group-vertical {
+    display: block;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default {
+    color: white;
+    background-color: #367faa;
+    border: none;
+    text-align: left;
+}
+
+.fontAwesomeFloating {
+    float: right;
+}
+
+.fontAwesomePadding {
+    padding: 0px 4%;
+}
+
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
+    border-bottom: 2px solid #666666;
+    color: white;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:active {
+    border-bottom: 2px solid #666666;
+    color: white;
+}
+
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    width: 100%;
+}
+
+/*
+ *form group required field (asterisk) and validation error message
+ *
+*/
+.form-group.required .control-label:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top: 7px;
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.field-validation-error {
+    color: #d00;
+}

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C5DF267-226A-415A-AD7F-831E8C5639BA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NTierUoWExampleApp.Core</RootNamespace>
+    <AssemblyName>NTierUoWExampleApp.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\.NET-MVC-n-Tier-Unit-Of-Work-Pattern-with-user-management\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BindingModels\Account\ChangePasswordViewModel.cs" />
+    <Compile Include="BindingModels\Account\CreateUserViewModel.cs" />
+    <Compile Include="BindingModels\Account\EditUserViewModel.cs" />
+    <Compile Include="BindingModels\Account\LoginViewModel.cs" />
+    <Compile Include="BindingModels\Account\ManageAccountViewModel.cs" />
+    <Compile Include="BindingModels\Account\RegisterUserViewModel.cs" />
+    <Compile Include="BindingModels\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="BindingModels\Account\UserViewModel.cs" />
+    <Compile Include="BindingModels\Common\MethodActionResult.cs" />
+    <Compile Include="BindingModels\JqGrid\JqGridResultViewModel.cs" />
+    <Compile Include="BindingModels\JqGrid\JqGridSearchModel.cs" />
+    <Compile Include="Configuration\ApplicationInformation.cs" />
+    <Compile Include="Configuration\InitDatabase.cs" />
+    <Compile Include="Notification\Email\Config\EmailMessageFormatter.cs" />
+    <Compile Include="Notification\Email\Config\Message.cs" />
+    <Compile Include="Notification\Email\Config\MessageConfig.cs" />
+    <Compile Include="Notification\Email\EmailService.cs" />
+    <Compile Include="Notification\Email\Provider\Gmail.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ApplicationLogger.cs" />
+    <Compile Include="Utility\Converter\AppConverter.cs" />
+    <Compile Include="Utility\Identity\ApplicationUserManager.cs" />
+    <Compile Include="Utility\JqGrid\JqGridPaging.cs" />
+    <Compile Include="Utility\JqGrid\JqGridPagingHelper.cs" />
+    <Compile Include="Utility\JqGrid\LambdaExpressionsHelper.cs" />
+    <Compile Include="Utility\Validation\ValidationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Notification\Email\Templates\HTML\AccountCreated_Subject.html" />
+    <EmbeddedResource Include="Notification\Email\Templates\HTML\PasswordReset_Body.html" />
+    <EmbeddedResource Include="Notification\Email\Templates\HTML\PasswordReset_Subject.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NTierUoWExampleApp.Common\NTierUoWExampleApp.Common.csproj">
+      <Project>{c05540cd-ad26-458b-be52-530d3f5bbe42}</Project>
+      <Name>NTierUoWExampleApp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NTierUoWExampleApp.DAL\NTierUoWExampleApp.DAL.csproj">
+      <Project>{bbe2c3a7-4058-4c3f-b2f6-5370408ae1f1}</Project>
+      <Name>NTierUoWExampleApp.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Notification\Email\Templates\HTML\AccountCreated_Body.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
