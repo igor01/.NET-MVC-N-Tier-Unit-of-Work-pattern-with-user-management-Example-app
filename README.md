@@ -6,9 +6,9 @@ User management.
 
 Extended Microsoft Identity Framework.
 
-JqGrig with custom generic server side paging support.
+JqGrid with custom generic server side paging support.
 
-Signalr.
+ASP.NET SignalR.
 
 User online status tracking.
 
