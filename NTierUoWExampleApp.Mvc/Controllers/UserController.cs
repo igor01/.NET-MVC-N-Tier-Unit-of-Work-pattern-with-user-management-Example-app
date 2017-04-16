@@ -330,6 +330,20 @@ namespace NTierUoWExampleApp.Mvc.Controllers
             return View();
         }
 
+        public ActionResult GetUserBrowsingHistory(string userId)
+        {
+            var message = string.Empty;
+            try
+            {
+                var history = service.GetUserBrowsingHistory(userId);
+                return Json(new { success = true, history = history }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, message = "Something went wrong. Contact your administrator." }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         #region Helpers
         private IAuthenticationManager AuthenticationManager
         {

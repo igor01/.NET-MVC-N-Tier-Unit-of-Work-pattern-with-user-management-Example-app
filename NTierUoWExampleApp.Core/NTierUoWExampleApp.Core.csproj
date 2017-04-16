@@ -86,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels\Account\BrowsingHistoryViewModel.cs" />
     <Compile Include="BindingModels\Account\ChangePasswordViewModel.cs" />
     <Compile Include="BindingModels\Account\CreateUserViewModel.cs" />
     <Compile Include="BindingModels\Account\EditUserViewModel.cs" />

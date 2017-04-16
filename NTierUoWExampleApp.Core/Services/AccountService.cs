@@ -114,7 +114,7 @@ namespace NTierUoWExampleApp.Core.Services
                     }
 
 
-                    // When a user is lockedout, this check is done to ensure that even if the credentials are valid
+                    // When user is locked, this check is done to ensure that even if the credentials are valid
                     // the user can not login until the lockout duration has passed
                     if (await UserManager.IsLockedOutAsync(user.Id))
                     {
@@ -844,6 +844,36 @@ namespace NTierUoWExampleApp.Core.Services
             {
                 LogError("GetSystemRoleForUser", e);
                 Trace.TraceError(string.Format("GetSystemRoleForUser error: {0}", e.Message));
+                throw e;
+            }
+        }
+        public List<BrowsingHistoryViewModel> GetUserBrowsingHistory(string userId)
+        {
+            try
+            {
+                List<BrowsingHistoryViewModel> model = new List<BrowsingHistoryViewModel>();
+
+                //get user history for last 3 months
+                DateTime time = DateTime.UtcNow.AddMonths(-3);
+                var history = (from h in unitOfWork.BrowsingHistoryRepository.GetAllQueryable()
+                               .Where(x => x.UserId == userId && x.DateTimeUtc > time)
+                               .OrderByDescending(x => x.DateTimeUtc)
+                               select h).ToList();
+
+                if (history != null && history.Count > 0)
+                {
+                    foreach (var hist in history)
+                    {
+                        model.Add(new BrowsingHistoryViewModel(hist));
+                    }
+                }
+
+                return model;
+            }
+            catch (Exception e)
+            {
+                LogError("BrowsingHistoryViewModel", e);
+                Trace.TraceError(string.Format("GetUserBrowsingHistory in account service error: {0}", e.Message));
                 throw e;
             }
         }

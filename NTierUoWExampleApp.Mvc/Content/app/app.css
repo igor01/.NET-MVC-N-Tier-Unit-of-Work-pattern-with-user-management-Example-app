@@ -152,7 +152,7 @@
 
 /*jqGrid action buttons*/
 #jqGrid-action-panel a.btn {
-    height: 40%;
+    height: 60%;
     padding: 0px 8px;
 }
 
@@ -256,4 +256,20 @@
 
 .field-validation-error {
     color: #d00;
+}
+
+/*
+    user history
+*/
+@media (min-width: 768px) {
+    
+     .modal-dialog-user-browsing-history{
+        width: 950px;
+    }
+
+}
+
+.user-browsing-history-container{
+    overflow:auto;
+    max-height: 400px;
 }

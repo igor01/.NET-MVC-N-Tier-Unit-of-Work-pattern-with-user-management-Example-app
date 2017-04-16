@@ -43,7 +43,7 @@
                     { name: 'PhoneNumber', index: 'PhoneNumber', resizable: false },
                     { name: 'Status', index: 'Status', resizable: false },
                     { name: 'LastLogin', index: 'LastLogin', resizable: false, formatter: "date", formatoptions: { newformat: "d/m/Y H:i" } },
-                    { name: 'Actions', index: '', resizable: false, sortable: false, search: false, formatter: userManager.gridActionsFormat }
+                    { name: 'Actions', index: '', resizable: false, width: "200px", sortable: false, search: false, formatter: userManager.gridActionsFormat }
             ],
             viewrecords: true,
             emptyrecords: "No data in database",
@@ -89,30 +89,29 @@
 
         var edit = '<a href="' + userManager.aplication_hostname + '/User/Edit?userId=' + rowObject['Id'] + '" class="btn" title="Edit">' +
                             '<i class="fa fa-pencil-square"></i>' +
-                            //'Edit' +
                        '</a>';
 
         var reset = '<a onclick="userManager.resetUserPassword(\'' + rowObject['Id'] + ',' + rowObject['UserName'] + '\');" class="btn" title="Reset password">' +
                         '<i class="fa fa-key"></i>' +
-                        //'Reset' +
                    '</a>';
-
 
 
         var del = '<a onclick="userManager.deletUser(\'' + rowObject['Id'] + ',' + rowObject['UserName'] + '\');" class="btn" title="Delete">' +
                             '<i class="fa fa-trash"></i>' +
-                            //'Delete' +
                         '</a>';
 
         var resend = '<a onclick="userManager.resendToken(\'' + rowObject['Id'] + ',' + rowObject['UserName'] + '\');" class="btn" title="Resend account confirmation token">' +
                            '<i class="fa fa-envelope"></i>' +
-                           //'Manage' +
                        '</a>';
+
+        var history = '<a onclick="userManager.userBrowsingHistory(\'' + rowObject['Id'] + ',' + rowObject['UserName'] + '\');" class="btn" title="View browsing history">' +
+                            '<i class="fa fa-history"></i>' +
+                        '</a>';
 
         var endAction = '</div>';
 
 
-        var actions = startAction + divOpen + edit + reset + del + resend + divClose + endAction;
+        var actions = startAction + divOpen + edit + reset + del + resend + history + divClose + endAction;
         return actions;
 
     },
@@ -264,4 +263,50 @@
             showNotification(options);
         }
     },
+    userBrowsingHistory: function (data) {
+        var res = data.split(",");
+        var userId = res[0];
+        var userName = res[1];
+
+        $.ajax({
+            url: '/User/GetUserBrowsingHistory/',
+            data: { userId: userId },
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.success) {
+                    userManager.showUserBrowsingHistory(data.history);
+                }
+                else {
+                    if (data.message != undefined && data.message != "") {
+                        showNotification(data.message, "info", 0);
+                    }
+                }
+            },
+            error: function (data) {
+                if (data.message != undefined && data.message != "") {
+                    showNotification(data.message, "danger", 0);
+                }
+            }
+        });
+    },
+    showUserBrowsingHistory: function (userHistory) {
+        if (userHistory == undefined || userHistory == null) return false;
+
+        //empty container first
+        var container = $('#user_web_browsing_table_data_container');
+        container.empty();
+
+        for (index in userHistory) {
+            var row = '<tr>' +
+                            '<td>' + userHistory[index].DateTimeUtc + '</td>' +
+                            '<td>' + userHistory[index].PageUrl + '</td>' +
+                            '<td>' + userHistory[index].UserAgent + '</td>' +
+                      '</tr>';
+
+            $(row).appendTo(container);
+        }
+
+        $('#user_browsing_history_modal').modal({ backdrop: 'static', keyboard: true }, 'show');
+    }
 }
