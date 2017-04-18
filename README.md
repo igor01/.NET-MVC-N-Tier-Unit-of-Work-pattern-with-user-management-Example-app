@@ -13,3 +13,7 @@ ASP.NET SignalR.
 User online status tracking.
 
 User web browsing history.
+
+OAuth authentication.
+
+RESTful API.
