@@ -1,4 +1,5 @@
 ﻿using NTierUoWExampleApp.DAL.Models.Account;
+using NTierUoWExampleApp.DAL.Models.Authentication;
 using NTierUoWExampleApp.DAL.Models.Global;
 using NTierUoWExampleApp.DAL.Repositories.IRepositories;
 using System;
@@ -29,6 +30,12 @@ namespace NTierUoWExampleApp.DAL.UnitOfWork.IUoW
         IRepository<UserRole> UserRoleRepository { get; }
         IRepository<UserWebClientConnection> UserWebClientConnectionRepository { get; }
         IRepository<BrowsingHistory> BrowsingHistoryRepository { get; }
+
+
+        //Web API
+        IRepository<Client> ClientRepository { get; }
+        IRepository<RefreshToken> RefreshTokenRepository { get; }
+        IRepository<ClientUsers> ClientUsersRepository { get; }
 
 
         //Logging

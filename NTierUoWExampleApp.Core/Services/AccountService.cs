@@ -595,7 +595,6 @@ namespace NTierUoWExampleApp.Core.Services
             try
             {
                 var user = await unitOfWork.UserRepository.FindByUserNameAsync(username);
-                //var user = await UserManager.FindByNameAsync(username);
                 if (user == null) throw new ValidationException("User not found.");
                 return user;
             }
@@ -603,6 +602,19 @@ namespace NTierUoWExampleApp.Core.Services
             {
                 await LogError("GetUserByUsername", e);
                 Trace.TraceError(string.Format("GetUserByUsername in account service error: {0}", e.Message));
+                throw e;
+            }
+        }
+        public async Task<User> GetByUsernameAndPassword(string username, string password)
+        {
+            try
+            {
+                return await UserManager.FindAsync(username, password);
+            }
+            catch (Exception e)
+            {
+                await LogError("GetUserByUsername", e);
+                Trace.TraceError(string.Format("GetByUsernameAndPassword in account service error: {0}", e.Message));
                 throw e;
             }
         }

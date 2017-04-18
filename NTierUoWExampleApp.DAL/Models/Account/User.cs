@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using NTierUoWExampleApp.DAL.Models.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace NTierUoWExampleApp.DAL.Models.Account
             UserNotifications = new List<UserNotification>();
             UserWebClientConnections = new List<UserWebClientConnection>();
             BrowsingHistory = new List<BrowsingHistory>();
+            ClientUsers = new List<ClientUsers>();
         }
         //inherited properties
 
@@ -47,5 +49,6 @@ namespace NTierUoWExampleApp.DAL.Models.Account
         public virtual ICollection<UserNotification> UserNotifications { get; set; }
         public virtual ICollection<UserWebClientConnection> UserWebClientConnections { get; set; }
         public virtual ICollection<BrowsingHistory> BrowsingHistory { get; set; }
+        public virtual ICollection<ClientUsers> ClientUsers { get; set; }
     }
 }

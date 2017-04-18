@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using NTierUoWExampleApp.Common.Utility;
 using NTierUoWExampleApp.DAL.Models.Account;
+using NTierUoWExampleApp.DAL.Models.Authentication;
 using NTierUoWExampleApp.DAL.Models.Global;
 using NTierUoWExampleApp.DAL.ModelsConfiguration.Account;
+using NTierUoWExampleApp.DAL.ModelsConfiguration.Authentication;
 using NTierUoWExampleApp.DAL.ModelsConfiguration.Global;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,11 @@ namespace NTierUoWExampleApp.DAL.DBInitialization
         public DbSet<UserWebClientConnection> UserWebClientConnections { get; set; }
         public DbSet<BrowsingHistory> BrowsingHistory { get; set; }
 
+        //OAuth
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<ClientUsers> ClientUsers { get; set; }
+
         //Logging
         public DbSet<ErrorLog> ErrorLogs { get; set; }
 
@@ -45,6 +52,11 @@ namespace NTierUoWExampleApp.DAL.DBInitialization
             modelBuilder.Configurations.Add(new UserNotificationConfig());
             modelBuilder.Configurations.Add(new UserWebClientConnectionConfig());
             modelBuilder.Configurations.Add(new BrowsingHistoryConfig());
+
+            //OAuth
+            modelBuilder.Configurations.Add(new ClientUsersConfig());
+            modelBuilder.Configurations.Add(new ClientConfig());
+            modelBuilder.Configurations.Add(new RefreshTokenConfig());
 
             //Logging
             modelBuilder.Configurations.Add(new ErrorLogConfig());

@@ -1,5 +1,6 @@
 ﻿using NTierUoWExampleApp.DAL.DBInitialization;
 using NTierUoWExampleApp.DAL.Models.Account;
+using NTierUoWExampleApp.DAL.Models.Authentication;
 using NTierUoWExampleApp.DAL.Models.Global;
 using NTierUoWExampleApp.DAL.Repositories;
 using NTierUoWExampleApp.DAL.Repositories.IRepositories;
@@ -25,6 +26,11 @@ namespace NTierUoWExampleApp.DAL.UnitOfWork
         private IRepository<UserRole> userRoleRepository;
         private IRepository<UserWebClientConnection> userWebClientConnectionRepository;
         private IRepository<BrowsingHistory> browsingHistoryRepository;
+
+        //Web API
+        private IRepository<Client> clientRepository;
+        private IRepository<RefreshToken> refreshTokenRepository;
+        private IRepository<ClientUsers> clientUsersRepository;
 
         //Logging
         private IRepository<ErrorLog> errorLogRepository;
@@ -99,6 +105,21 @@ namespace NTierUoWExampleApp.DAL.UnitOfWork
         public IRepository<BrowsingHistory> BrowsingHistoryRepository
         {
             get { return browsingHistoryRepository ?? (browsingHistoryRepository = new GenericRepository<BrowsingHistory>(context)); }
+        }
+
+
+        //Web API
+        public IRepository<Client> ClientRepository
+        {
+            get { return clientRepository ?? (clientRepository = new GenericRepository<Client>(context)); }
+        }
+        public IRepository<RefreshToken> RefreshTokenRepository
+        {
+            get { return refreshTokenRepository ?? (refreshTokenRepository = new GenericRepository<RefreshToken>(context)); }
+        }
+        public IRepository<ClientUsers> ClientUsersRepository
+        {
+            get { return clientUsersRepository ?? (clientUsersRepository = new GenericRepository<ClientUsers>(context)); }
         }
 
         //Error log

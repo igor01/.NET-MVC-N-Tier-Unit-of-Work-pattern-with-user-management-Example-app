@@ -13,7 +13,11 @@
                 </li>
 
                 <li class="@(ViewContext.RouteData.Values["controller"].ToString().Equals("User") ? "active" : "")">
-                    <a href="@Url.Action("Index", "User")"><i class="fa fa-home"></i> <span>Users</span></a>
+                    <a href="@Url.Action("Index", "User")"><i class="fa fa-users"></i> <span>Users</span></a>
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString().Equals("WebApi") ? "active" : "")">
+                    <a href="@Url.Action("Index", "WebApi")"><i class="fa fa-globe"></i> <span>API Access</span></a>
                 </li>
             }
 

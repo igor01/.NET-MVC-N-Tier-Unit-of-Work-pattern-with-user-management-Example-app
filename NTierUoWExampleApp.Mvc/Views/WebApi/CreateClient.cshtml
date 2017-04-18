@@ -1,0 +1,206 @@
+﻿@model NTierUoWExampleApp.Core.BindingModels.WebApi.CreateClientViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section breadcrumbs{
+    <section class="content-header">
+        <h1 class="page-header">
+            Create Client
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "WebApi")">Clients</a>
+            </li>
+            <li class="active">
+                Create Client
+            </li>
+        </ol>
+    </section>
+}
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Create new client</h3>
+            </div>
+
+
+            @using (Html.BeginForm("CreateClient", "WebApi", FormMethod.Post, new { @class = "form-horizontal", @role = "form" }))
+            {
+                <div class="box-body">
+
+                   
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.ClientAppId, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.ClientAppId, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.ClientAppId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Secret, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.Secret, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.Secret)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Name, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.WebApiApplicationTypes, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.EnumDropDownListFor(x => x.WebApiApplicationTypes, "-- Please select --", new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.WebApiApplicationTypes)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.WebApiApplicationDataAccessTypes, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.EnumDropDownListFor(x => x.WebApiApplicationDataAccessTypes, "-- Please select --", new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.WebApiApplicationDataAccessTypes)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Status, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.EnumDropDownListFor(x => x.Status, "-- Please select --", new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.Status)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.AccessTokenLifeTime, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.AccessTokenLifeTime, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.AccessTokenLifeTime)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.RefreshTokenLifeTime, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.RefreshTokenLifeTime, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.RefreshTokenLifeTime)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.AllowedOrigin, new { @class = "col-sm-9 control-label" })
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.AllowedOrigin, new { @class = "form-control" })
+                                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3">
+                            @Html.ValidationMessageFor(x => x.AllowedOrigin)
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="box-footer">
+                    <a href="@Url.Action("Index", "WebApi")" class="btn btn-default">Cancel</a>
+                    <button type="submit" class="btn btn-info pull-right">Submit</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

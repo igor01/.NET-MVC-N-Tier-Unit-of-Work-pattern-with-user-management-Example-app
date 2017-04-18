@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\Authentication\ClientStatusEnum.cs" />
+    <Compile Include="Enum\Authentication\WebApiApplicationDataAccessTypes.cs" />
+    <Compile Include="Enum\Authentication\WebApiApplicationTypes.cs" />
     <Compile Include="Enum\Email\EmailTypeEnum.cs" />
     <Compile Include="Enum\Global\MessageTypeEnum.cs" />
     <Compile Include="Enum\Logger\LogTypeEnum.cs" />
